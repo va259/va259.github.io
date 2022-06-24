@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>onRecord</title>
+    <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
+    <style>
+        body {
+            background-color: #F7F7F7;
+        }
+
+        div {
+            font-family: Helvetica, sans-serif;
+            text-align: center;
+            color:#121212;
+        }
+        
+        #rating {
+            margin-top: 20px;
+            font-size: 600%;
+        }
+
+        #label {
+            margin-top: 30px;
+            font-size: 250%;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="label">Average Rating:</div>
+    <div id="rating">Waiting for data...</div>
+    <script>
+      grist.ready();
+      grist.onRecord(function(record) {
+        document.getElementById('rating').innerHTML = record.Avg_Rating.toFixed(2);
+      });
+    </script>
+  </body>
+</html>
